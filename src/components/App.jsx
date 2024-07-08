@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Statistics from "./Statistics";
 import FeedbackOptions from "./FeedbackOptions";
+import Statistics from "./Statistics";
 import Section from "./Section";
-import Notification from "./Natification";
+import Notification from "./Notification";
 
 function App() {
   const [state, setState] = useState({
@@ -24,7 +24,7 @@ function App() {
     : 0;
 
   return (
-    <div style={{ fontFamily: "Arial" }}>
+    <div>
       <Section title="Expresso Feedback">
         <FeedbackOptions
           options={["good", "neutral", "bad"]}
