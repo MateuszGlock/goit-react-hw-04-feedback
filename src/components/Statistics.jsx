@@ -1,29 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class Statistics extends Component {
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.props;
-    return good + neutral + bad;
-  };
-
-  countPositiveFeedbackPercentage = () => {
-    const total = this.countTotalFeedback();
-    return total ? Math.round((this.props.good / total) * 100) : 0;
-  };
-
-  render() {
-    const { good, neutral, bad } = this.props;
-    return (
-      <div style={{ fontFamily: "Arial" }}>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
-        <p>Total: {this.countTotalFeedback()} </p>
-        <p>Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
-      </div>
-    );
-  }
+function Statistics({ good, neutral, bad, total, positivePercentage }) {
+  return (
+    <div>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
+      <p>Total: {total}</p>
+      <p>Positive feedback: {positivePercentage}%</p>
+    </div>
+  );
 }
 
 Statistics.propTypes = {
@@ -33,4 +20,5 @@ Statistics.propTypes = {
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
 };
+
 export default Statistics;
