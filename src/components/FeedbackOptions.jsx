@@ -1,24 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class FeedbackOptions extends Component {
-  handleFeedback = (type) => {
-    this.props.onLeaveFeedback(type);
-  };
-
-  render() {
-    return (
-      <div style={{ fontFamily: "Arial" }}>
-        <div>
-          <button onClick={() => this.handleFeedback("good")}>Good</button>
-          <button onClick={() => this.handleFeedback("neutral")}>
-            Neutral
-          </button>
-          <button onClick={() => this.handleFeedback("bad")}>Bad</button>
-        </div>
-      </div>
-    );
-  }
+function FeedbackOptions({ options, onLeaveFeedback }) {
+  return (
+    <div>
+      {options.map((option) => (
+        <button key={option} onClick={() => onLeaveFeedback(option)}>
+          {option.charAt(0).toUpperCase() + option.slice(1)}
+        </button>
+      ))}
+    </div>
+  );
 }
 
 FeedbackOptions.propTypes = {
